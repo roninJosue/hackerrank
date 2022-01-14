@@ -1,38 +1,26 @@
 function plusMinus(arr) {
   const nElements = arr.length
 
-  let z = {
-    z: 0
-  }
-  let pos = {
-    p: 0
-  }
-  let n = {
-    n: 0
-  }
+  let zero = 0
+  let positive = 0
+  let negative = 0
 
-  const arrObj = arr.reduce((p, c) => {
-    if (c === 0) {
-      z.z++
+  arr.forEach(num => {
+    if (num === 0) {
+      zero++
+    } else if (num > 0) {
+      positive++
+    } else {
+      negative++
     }
+  })
 
-    if (c > 0){
-      pos.p++
-    }
-
-    if(c <0){
-      n.n++
-    }
-    
-    return { ...p, ...pos, ...n, ...z }
-  }, { p: 0, n: 0, z: 0 })
-
-  console.log((arrObj.p / nElements).toFixed(6))
-  console.log((arrObj.n / nElements).toFixed(6))
-  console.log((arrObj.z / nElements).toFixed(6))
+  console.log((positive / nElements).toFixed(6))
+  console.log((negative / nElements).toFixed(6))
+  console.log((zero / nElements).toFixed(6))
 }
 
-const test = [1, 2, 3, -1, -2, -3, 0, 0]
+const test = [-4, 3, -9, 0, 4, 1]
 
 plusMinus(test)
 
