@@ -5,16 +5,35 @@
  */
 
 const timeConversion = (time) => {
-  /**
-   * si son las 12:XX:XXAM
- Se le restan 12 hrs
+  const AM = 'AM'
+  const PM = 'PM'
+  const twelveHours = 12
+  const amPm = time.slice(-2)
+  const hour = Number(time.slice(0, 2))
+  const minutesAndSeconds = time.slice(2, time.length - 2)
 
-si la hora esta entre 1:XX:XXAM - 12:XX:XXPM
- Las horas y minutos permanecen igual
+  const calculateHour = (h, operation = 'sum') => {
+    const result =  operation === 'sum' ? h + twelveHours : h - twelveHours
 
-Horas entre 1:XX:XXPM - 11:XX:XXPM
- Se agregan 12 horas
-   */
+    return ('00'+result).slice(-2)
+  }
+
+  if(amPm === AM && hour === twelveHours){
+    return `${calculateHour(hour, 'minus')}${minutesAndSeconds}`
+  }
+
+  if(amPm === PM && hour < 12) {
+    return `${calculateHour(hour)}${minutesAndSeconds}`
+  }
+
+  if(hour === 12 && amPm === PM){
+    return `${hour}${minutesAndSeconds}`
+  }
+
+  if(amPm === AM && hour < 12){
+    return `${('00'+hour).slice(-2)}${minutesAndSeconds}`
+  }
+
 }
 
-timeConversion('12:01:00PM')
+console.log(timeConversion('06:40:03AM'))
