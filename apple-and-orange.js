@@ -9,16 +9,15 @@
  */
 
 const appleAndOrange = (s, t, a, b, apples, oranges) => {
-    const nApples = apples.filter(apple => {
-        const sum = a + apple
+    const toFilter = (fruit, tree) => {
+        const sum = tree + fruit
         return (sum >= s && sum <= t)
-    }).length
-    const nOranges = oranges.filter(orange=>{
-        const sum = b + orange
-        return (sum >= s && sum <= t)
-    }).length
+    }
+    const nApples = apples.filter(fruit => toFilter(fruit, a)).length
+    const nOranges = oranges.filter(fruit => toFilter(fruit, b)).length
+
     console.log(nApples)
     console.log(nOranges)
 }
 
-appleAndOrange(7, 11, 5, 15, [-2, 2, 1], [5, -6])
+appleAndOrange(7, 11, 5, 15, [-2, 2, 1], [5, -6, -5])
