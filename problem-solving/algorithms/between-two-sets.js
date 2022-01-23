@@ -8,3 +8,5 @@
 const betweenTwoSets = (arr1, arr2) => {
 
 }
+
+betweenTwoSets([2, 6], [5, 6])
