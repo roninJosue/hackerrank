@@ -1,3 +1,3 @@
 # Hackerrank Problems
 
-## Hackerrank exercises
+## Trying to resolve the problems of hackerrank.
