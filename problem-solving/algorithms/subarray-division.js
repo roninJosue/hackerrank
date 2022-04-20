@@ -10,7 +10,13 @@
  */
 
 const birthday = (s, d, m) => {
+  let count = 0;
+  for (let index = 0, size = s.length; index < size; index++) {
+    let sum = s.slice(index, index + m).reduce((a, b) => a + b)
+    if (sum === d) count++;
+  }
 
+  return count;
 }
 
-console.log(birthday([2, 2, 1, 3, 2], 4, 2))
+birthday([1, 2, 1, 3, 2], 3, 2)
