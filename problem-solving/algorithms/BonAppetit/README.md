@@ -5,6 +5,8 @@ For example, assume the bill has the following prices: `bill = [2, 4, 6]`. Anna 
 If Brian calculates the bill correctly, Anna will pay `(2 + 4)/2 = 3`. If he includes the cost of `k`, he will calculate `(2 + 4 + 6)/2 = 6`. 
 In the second case, he should refund `3` to Anna.
 
+**Link to the problem**: https://www.hackerrank.com/challenges/bon-appetit/problem
+
 ### Function Description
 Complete the `bonAppetit` function in the editor below. 
 It should print Bon Appetit if the bill is fairly split. 
