@@ -1,26 +1,10 @@
 const pageCount = (n, p) => {
-  let count = 0;
-  let count2 = 0;
-  let page = 1;
+  const totalPagesLeftToRight = Math.floor(n / 2);
+  const turnsToTargetPageLeftToRight = Math.floor(p / 2)
 
-  while (page < p) {
-    page += 2;
-    count++;
-  }
-
-  if (n % 2 !== 0) {
-    page = n - 1
-  } else {
-    page = n
-  }
-
-  while (page > p) {
-    count2++;
-    page -= 2;
-  }
-
-  return Math.min(count, count2);
+  const turnsToTargetPageRightToLeft = totalPagesLeftToRight - turnsToTargetPageLeftToRight;
+  return Math.min(turnsToTargetPageLeftToRight, turnsToTargetPageRightToLeft);
 }
 
 //console.log(pageCount(6, 2))
-console.log(pageCount(6, 2))
+console.log(pageCount(11, 4))
