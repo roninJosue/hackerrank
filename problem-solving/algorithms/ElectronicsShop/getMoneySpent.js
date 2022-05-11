@@ -1,15 +1,15 @@
 const getMoneySpent = (keyboards, drives, b) => {
-  let arr = []
+  let max = -1
 
   for (const keyboardPrice of keyboards) {
     if (keyboardPrice >= b) continue;
     for (const usbPrice of drives) {
       const sum = keyboardPrice + usbPrice
-      if (sum <= b) arr.push(sum)
+      if (sum <= b && sum > max) max = sum
     }
   }
-  return  arr.length ? Math.max(...arr)  : -1
+  return  max
 }
 
-//console.log(getMoneySpent([40, 50, 60], [5, 8, 12], 60))
-console.log(getMoneySpent([4], [5], 5))
+console.log(getMoneySpent([40, 50, 60], [5, 8, 12], 60))
+//console.log(getMoneySpent([4], [5], 5))
