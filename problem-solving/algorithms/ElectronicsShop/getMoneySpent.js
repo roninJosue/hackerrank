@@ -1,14 +1,10 @@
 const getMoneySpent = (keyboards, drives, b) => {
-  const k = keyboards.sort((a, b) => b - a)
-  const d = drives.sort((a, b) => b - a)
   let arr = []
 
   for (const keyboardPrice of keyboards) {
     if (keyboardPrice >= b) continue;
     for (const usbPrice of drives) {
-      const kCost = keyboardPrice
-      const dCost = usbPrice
-      const sum = kCost + dCost
+      const sum = keyboardPrice + usbPrice
       if (sum <= b) arr.push(sum)
     }
   }
