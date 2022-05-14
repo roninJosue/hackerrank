@@ -1,0 +1,1 @@
+We define a magic square to be an nxn matrix of distinct positive integers from 1 to n^2 such that the sum of the n
