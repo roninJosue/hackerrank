@@ -11,11 +11,11 @@ const formingMagicSquare = (s) => {
 
   let min = 10000;
 
-  for (let i = 0; i < magicSquares.length; i++) {
+  for (const element of magicSquares) {
     let sum = 0;
     for (let j = 0; j < s.length; j++) {
       for (let k = 0; k < s.length; k++) {
-        sum += Math.abs(s[j][k] - magicSquares[i][j][k]);
+        sum += Math.abs(s[j][k] - element[j][k]);
       }
     }
     if (sum < min) {
