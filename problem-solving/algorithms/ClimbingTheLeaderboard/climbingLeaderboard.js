@@ -1,3 +1,3 @@
-const climbingLeaderboard = () => {
+const climbingLeaderboard = (ranked, player) => {
 
 }
