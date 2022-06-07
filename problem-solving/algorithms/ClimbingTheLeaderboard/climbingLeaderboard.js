@@ -3,6 +3,24 @@ const climbingLeaderboard = (ranked, player) => {
   let positions = {}
   const res = []
 
+  const binarySearch = (a, target) => {
+    let start = 0;
+    let end = a.length - 1;
+    let mid = Math.floor((start + end) / 2)
+
+    while (start <= end) {
+      if (a[mid] === target) {
+        return mid
+      } else if (a[mid] < target) {
+        start = mid + 1
+      } else {
+        end = mid - 1
+      }
+      mid = Math.floor((start + end) / 2)
+    }
+    return mid
+  }
+
   ranked.forEach(r => {
     //console.log(r)
     if (!positions[r]) {
