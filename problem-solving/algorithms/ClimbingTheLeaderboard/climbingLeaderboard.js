@@ -1,44 +1,44 @@
-const climbingLeaderboard = (ranked, player) => {
-  let position = 1;
-  let positions = {}
-  const res = []
-
-  const binarySearch = (a, target) => {
-    let start = 0;
-    let end = a.length - 1;
-    let mid = Math.floor((start + end) / 2)
-
-    while (start <= end) {
-      if (a[mid] === target) {
-        return mid
-      } else if (a[mid] < target) {
-        start = mid + 1
-      } else {
-        end = mid - 1
-      }
-      mid = Math.floor((start + end) / 2)
+const binarySearch = (s, a, i, j, r) => {
+  if ((j - i) <= 1) {
+    if (a > s[i]) {
+      return (r[s[i]] - 1) > 0 ? r[s[i]] - 1 : 1;
+    } else if (a === s[i]) {
+      return r[s[i]];
+    } else if (a > s[j]) {
+      return r[s[i]] + 1;
+    } else if (a === s[j]) {
+      return r[s[j]] === undefined ? r[s[j - 1]] : r[s[j]];
+    } else {
+      return r[s[j]] === undefined ? r[s[j - 1]] + 1 : r[s[j]] + 1;
     }
-    return mid
   }
-
-  ranked.forEach(r => {
-    //console.log(r)
-    if (!positions[r]) {
-      positions[r] = position
-      position++
-    }
-  })
-
-  const arr = Object.keys(positions).reverse()
-
-  for (const element of player) {
-    let f = ''
-    let ind = arr.findIndex(a => element >= a)
-    if (ind === -1) f = positions[arr[arr.length - 1]] + 1
-    else f = positions[arr[ind]]
-    res.push(f)
+  let mid = Math.floor(i + (j - i) / 2);
+  if (s[mid] < a) {
+    return binarySearch(s, a, i, mid, r);
+  } else {
+    return binarySearch(s, a, mid, j, r);
   }
-  return res
 }
 
-console.log(climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]))
+const climbingLeaderboard = (ranked, player) => {
+
+  let rank = 1;
+  let ranks = []
+  let arr = []
+  ranks[ranked[0]] = 1
+
+  for (let index = 1; index < ranked.length; index++) {
+    if (ranked[index] !== ranked[index - 1]) {
+      rank++
+      ranks[ranked[index]] = rank
+    }
+  }
+
+  for (const element of player) {
+    arr.push(binarySearch(ranked, element, 0, ranked.length, ranks))
+  }
+
+  return arr
+}
+
+climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120])
