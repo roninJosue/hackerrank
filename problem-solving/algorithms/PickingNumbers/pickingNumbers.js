@@ -14,5 +14,4 @@ const pickingNumbers = (a) => {
   return max
 };
 
-const result = pickingNumbers([1,2,2,3,1,2])
-console.log(result)
+pickingNumbers([1, 2, 2, 3, 1, 2])
