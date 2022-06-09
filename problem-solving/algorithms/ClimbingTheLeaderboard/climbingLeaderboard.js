@@ -1,44 +1,55 @@
-const binarySearch = (s, a, i, j, r) => {
-  if ((j - i) <= 1) {
-    if (a > s[i]) {
-      return (r[s[i]] - 1) > 0 ? r[s[i]] - 1 : 1;
-    } else if (a === s[i]) {
-      return r[s[i]];
-    } else if (a > s[j]) {
-      return r[s[i]] + 1;
-    } else if (a === s[j]) {
-      return r[s[j]] === undefined ? r[s[j - 1]] : r[s[j]];
-    } else {
-      return r[s[j]] === undefined ? r[s[j - 1]] + 1 : r[s[j]] + 1;
+const binarySearch = (array, key) => {
+  let low = 0;
+  let high = array.length - 1;
+
+  while (low <= high) {
+    const mid = low + Math.floor((high - low) / 2);
+    if (key === array[mid]) {
+      return mid;
+    } else if (array[mid] < key && key < array[mid - 1]) {
+      return mid;
+    } else if (array[mid] > key && key >= array[mid + 1]) {
+      return mid + 1;
+    } else if (array[mid] < key) {
+      high = mid - 1;
+    } else if(array[mid] > key) {
+      low = mid + 1;
     }
   }
-  let mid = Math.floor(i + (j - i) / 2);
-  if (s[mid] < a) {
-    return binarySearch(s, a, i, mid, r);
-  } else {
-    return binarySearch(s, a, mid, j, r);
-  }
+
+  return -1;
 }
 
 const climbingLeaderboard = (ranked, player) => {
+  const m = player.length;
+  const n = ranked.length;
+  let res = []
+  let rank = []
 
-  let rank = 1;
-  let ranks = []
-  let arr = []
-  ranks[ranked[0]] = 1
+  rank[0] = 1;
 
-  for (let index = 1; index < ranked.length; index++) {
-    if (ranked[index] !== ranked[index - 1]) {
-      rank++
-      ranks[ranked[index]] = rank
+  for (let i = 1; i < n; i++) {
+    if (ranked[i] === ranked[i - 1]) {
+      rank[i] = rank[i - 1];
+    } else {
+      rank[i] = rank[i - 1] + 1;
     }
   }
 
-  for (const element of player) {
-    arr.push(binarySearch(ranked, element, 0, ranked.length, ranks))
+  for (let i = 0; i < m; i++) {
+    const aliceScore = player[i];
+    if (aliceScore > ranked[0]) {
+      res[i] = 1;
+    } else if (aliceScore < ranked[n - 1]) {
+      res[i] = rank[n - 1] + 1;
+    } else {
+      const index = binarySearch(ranked, aliceScore);
+      res[i] = rank[index];
+    }
   }
 
-  return arr
+  return res;
 }
 
-climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120])
+const result = climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120])
+console.log(result)
