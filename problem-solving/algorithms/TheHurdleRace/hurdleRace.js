@@ -1,0 +1,3 @@
+const hurdleRace = (k, height) => {
+
+}
