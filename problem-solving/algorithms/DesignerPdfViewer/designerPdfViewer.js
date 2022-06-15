@@ -3,8 +3,7 @@ const designerPdfViewer = (h, word) => {
   let maxHeight = -1
 
   word.split('').forEach(w => {
-    const pos = w.charCodeAt(0) - 97
-    maxHeight = maxHeight < h[pos] ? h[pos] : maxHeight
+    maxHeight = Math.max(maxHeight, h[w.charCodeAt(0) - 97])
   })
 
   return maxHeight * n
