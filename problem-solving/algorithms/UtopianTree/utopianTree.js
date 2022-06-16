@@ -1,14 +1,5 @@
 const utopianTree = n => {
-  if (n === 0) return 1
-  if (n === 1) return 2
-
-  let height = 2
-
-  for (let index = 2; index <= n; index++) {
-    height = index % 2 === 0 ? height + 1 : height * 2
-  }
-
-  return height
+  return Math.pow(2, Math.ceil(n / 2) + 1) - 1 + ((n % 2 === 0) ? 0 : -1)
 }
 
 [0, 1, 2, 3, 4, 5].forEach(n => {
