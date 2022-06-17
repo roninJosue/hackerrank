@@ -1,13 +1,8 @@
 const beautifulDays = (i, j, k) => {
-  let count = 0
-
-  for (let number = i; number <= j; number++) {
-    const reverseNumber = Number(number.toString().split('').reverse().join(''))
-
-    if (Number.isInteger(Math.abs(number - reverseNumber) / k)) count++
-  }
-
-  return count
+  return Array.from({length: j - i + 1}, (_, y) => i + y).filter(n=>{
+    const reverse = Number(n.toString().split('').reverse().join(''))
+    return Math.abs(n - reverse) % k === 0
+  }).length
 }
 
 console.log(beautifulDays(20, 23, 6))
