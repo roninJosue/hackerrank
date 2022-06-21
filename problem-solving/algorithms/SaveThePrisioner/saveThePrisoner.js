@@ -1,7 +1,7 @@
 const saveThePrisoner = (n, m, s) => {
   let chair = s
 
-  while (m > 0) {
+  while (m > 1) {
     if (chair === n) {
       chair = 1
     } else {
@@ -10,7 +10,7 @@ const saveThePrisoner = (n, m, s) => {
     m--
   }
 
-  return chair - 1
+  return chair
 }
 
 console.log(saveThePrisoner(5, 2, 1))
