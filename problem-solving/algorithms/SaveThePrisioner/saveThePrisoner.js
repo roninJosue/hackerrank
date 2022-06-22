@@ -1,7 +1,3 @@
-const saveThePrisoner = (n, m, s) => {
-  const r = m % n;
-  const res = (r + s - 1) % n
-  return res === 0 ? n : res
-}
+const saveThePrisoner = (n, m, s) => (m % n + s - 1) % n || n
 
 console.log(saveThePrisoner(208526924, 756265725, 150817879))
