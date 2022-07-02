@@ -9,4 +9,4 @@ const circularArrayRotation = (a, k, queries) => {
   return queries.map(q => newArr[q])
 }
 
-console.log(circularArrayRotation([1, 2, 3], 1, [0, 1, 2]))
+console.log(circularArrayRotation([1, 2, 3, 7], 11, [0, 1, 2, 3]))
