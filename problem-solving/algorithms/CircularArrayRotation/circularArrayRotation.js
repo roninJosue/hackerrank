@@ -1,8 +1,9 @@
 const circularArrayRotation = (a, k, queries) => {
   let newArr = []
+  const size = a.length
 
-    for (let index = 0; index < a.length; index++) {
-      let newIndex = (k + index) % a.length
+    for (let index = 0; index < size; index++) {
+      let newIndex = (k + index) % size
       newArr[newIndex] = a[index]
     }
 
