@@ -3,8 +3,9 @@ const permutationEquation = p => {
   const permutationArray = []
 
   for (let index = 1; index <= n; index++) {
-    let i = p.findIndex(x => index === x)
-    let y = p.findIndex(z => (i + 1) === z)
+    let i = p.indexOf(index)
+    let y = p.indexOf(i + 1)
+
     permutationArray.push(y + 1)
   }
 
