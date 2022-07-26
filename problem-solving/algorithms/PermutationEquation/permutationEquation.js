@@ -3,10 +3,7 @@ const permutationEquation = p => {
   const permutationArray = []
 
   for (let index = 1; index <= n; index++) {
-    let i = p.indexOf(index)
-    let y = p.indexOf(i + 1)
-
-    permutationArray.push(y + 1)
+    permutationArray.push(p.indexOf(p.indexOf(index) + 1) + 1)
   }
 
   return permutationArray
