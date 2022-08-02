@@ -1,16 +1,15 @@
 const maxSubsetSum = (arr) => {
-  let sumEven = 0
-  let sumOdd = 0
+  let sum = arr[0];
+  let previousSum = 0;
+  let tempSum;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (i % 2 === 0) {
-      sumEven = Math.max(sumEven, sumEven + arr[i])
-    } else {
-      sumOdd = Math.max(sumOdd, sumOdd + arr[i])
-    }
+  for (let index = 1; index < arr.length; index++) {
+      tempSum = sum
+      sum = Math.max(sum, previousSum + arr[index])
+      previousSum = tempSum
   }
 
-  return Math.max(sumOdd, sumEven)
+  return sum
 }
 
 console.log(maxSubsetSum([-2, 1, 3, -4, 5]))
