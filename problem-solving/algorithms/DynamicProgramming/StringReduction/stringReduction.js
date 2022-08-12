@@ -14,14 +14,10 @@ const stringReduction = (s, m = 0, n = 1) => {
   const swap = table[`${s[m]}${s[n]}`]
 
   if (s[m] !== s[n] && swap !== s[n + 1]) {
-    let newString = ''
-    if (m === 0 && n === 1) {
-      newString = swap + s.slice(2)
-    } else {
-      newString = s.slice(0, n-1) + swap + s.slice(n+1, s.length)
-    }
+    const first = s.slice(0, m)
+    const last = s.slice(n + 1)
 
-    return stringReduction(newString, 0, 1)
+    return stringReduction(first + swap + last)
   } else {
     return stringReduction(s, m + 1, n + 1)
   }
@@ -29,9 +25,12 @@ const stringReduction = (s, m = 0, n = 1) => {
 
 //console.log(1 === stringReduction('ccaabcccbcabcbccbabacbbccccabbbababbccbbbbaacaabbccaababbacacbbbcaa', 0, 1))
 //console.log(stringReduction('abbbbaaaa', 0, 1))
+//console.log(stringReduction('aabccaaaccbccaacacbbcaaacbbaccbaacccaabaaccaaaaaabccccccbcaaccbacbaabbaa', 0, 1))
+//console.log(stringReduction('bbccbaa', 0, 1))
+console.time('d')
 console.log(stringReduction('aabccaaaccbccaacacbbcaaacbbaccbaacccaabaaccaaaaaabccccccbcaaccbacbaabbaa', 0, 1))
-console.log(stringReduction('bbccba', 0, 1))
-
+//console.log(stringReduction('abababaccc', 0, 1))
+console.timeEnd('d')
 
 //console.log(stringReduction('cab', 0, 1))
 ;
