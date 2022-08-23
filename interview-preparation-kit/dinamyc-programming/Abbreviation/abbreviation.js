@@ -7,15 +7,14 @@ const abbreviation = (a, b) => {
 
   for (let i = 0; i < a.length; i++) {
     const currInUpperCase = a[i].toUpperCase()
-    console.log(`String a: ${a[i]}, index: ${i}`)
-    //console.log(`String b: ${b[startB]}`)
+    console.log(`String a: ${a[i]}, index: ${i}, b[startB] = ${b[startB]}`)
     const currLetterIsUpper = a[i] === currInUpperCase
 
     const check = currInUpperCase === b[startB]
 
     if (!check && currLetterIsUpper) return 'NO'
 
-    else if (check && (currInUpperCase !== a[i+1] && !currLetterIsUpper)){
+    else if (check) {
       startB = startB < sizeStringB ? startB + 1 : startB
       sum++
     }
@@ -83,6 +82,12 @@ const test8 = abbreviation(
 //   'NZKeEdCF',
 //   'NZKECF'
 // )
+
+/*const test = abbreviation(
+  'abAxxaBa',
+  'ABA'
+)
+console.log(test)*/
 
 const test = abbreviation(
   'abAxxaBa',
