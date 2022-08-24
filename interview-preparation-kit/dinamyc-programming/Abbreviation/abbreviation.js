@@ -1,27 +1,35 @@
 const abbreviation = (a, b) => {
-  const sizeStringB = b.length
-  if (sizeStringB > a.length) return 'NO'
+  const lenStringA = a.length
+  const lenStringB = b.length
 
-  let startB = 0
-  let sum = 0
+  let DP = Array(lenStringB + 1)
+    .fill(false)
+    .map(() => Array(lenStringA + 1).fill(false))
 
-  for (let i = 0; i < a.length; i++) {
-    const currInUpperCase = a[i].toUpperCase()
-    console.log(`String a: ${a[i]}, index: ${i}, b[startB] = ${b[startB]}`)
-    const currLetterIsUpper = a[i] === currInUpperCase
+  DP[0][0] = true
 
-    const check = currInUpperCase === b[startB]
-
-    if (!check && currLetterIsUpper) return 'NO'
-
-    else if (check) {
-      startB = startB < sizeStringB ? startB + 1 : startB
-      sum++
+  for (let i = 1; i <= lenStringA; i++) {
+    //console.log(a[i])
+    for (let j = 1; j <= lenStringB; j++) {
+      const isUpper = a[i - 1] === a[i - 1].toUpperCase()
+      console.log(`a=${a[i - 1]}, b=${b[j - 1]}`)
+      if (a[i - 1].toUpperCase() === b[j - 1] && isUpper) {
+        DP[i][j] = DP[i - 1][j - 1]
+        console.log('cond a')
+      } else if (a[i - 1].toUpperCase() === b[j - 1] && !isUpper) {
+        DP[i][j] = DP[i - 1][j - 1] || DP[i][j - 1]
+        console.log('cond b')
+      } else if (a[i - 1].toUpperCase() !== b[j - 1] && isUpper) {
+        DP[i][j] = false
+        console.log('cond d')
+      } else {
+        DP[i][j] = DP[i][j - 1]
+        console.log('cond c')
+      }
     }
   }
 
-  console.log(`Here ${sizeStringB} ${sum}`)
-  return sizeStringB === sum ? 'YES' : 'NO'
+  console.log(DP)
 }
 
 console.time('abb')
@@ -94,19 +102,7 @@ const test = abbreviation(
   'ABA'
 )
 console.log(test)
-/*const test10 = abbreviation(
-  'OVJZKEFYZSXQTYZGaQCQZNVMGVHRLVGJJBACNFCUWKGRDAcMJPTUAEHHSODHILKNQSTLTQOJHSKYOEBQQWNWTNCZCFOIURGTLESWSOAALWDIOWfCDMPJAROWSJJIOBMZYZVVXPMFAMINSWOLKOLJKRALZQMXBWTFRPHADEVUVFWHEMDSTRVBSKHARYXCQZCRZFAVYKKWQSOLKXCMpNMDMPWSOHUAGZBUOSWWIKVSNSdng',
-  'OVJZKEFYZSXQTYZGQCQZNVMGVHRLVGJJBACNFCUWKGRDAMJPTUAEHHSODHILKNQSTLTQOJHSKYOEBQQWNWTNCZCFOIURGTLESWSOAALWDIOWCDMPJAROWSJJIOBMZYZVVXPMFAMINSWOLKOLJKRALZQMXBWTFRPHADEVUVFWHEMDSTRVBSKHARYXCQZCRZFAVYKKWQSOLKXCMNMDMPWSOHUAGZBUOSWWIKVSNS'
-)*/
+
 
 console.timeEnd('abb')
-/*console.log(`test1: ${test1}`)
-console.log(`test2: ${test2}`)
-console.log(`test3: ${test3}`)
-console.log(`test4: ${test4}`)
-console.log(`test5: ${test5}`)
-console.log(`test6: ${test6}`)
-console.log(`test7: ${test7}`)
-console.log(`test8: ${test8}`)*/
-//console.log(`test9: ${test9}`)
-//console.log(`test10: ${test10}`)
+
