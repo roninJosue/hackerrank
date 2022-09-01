@@ -1,6 +1,9 @@
-# Hackerrank Problems
+<p align="center">
+<img width="600" src="hackerrank-image.jpg" alt="HackerRank" />
+</p>
 
-## Trying to resolve the problems of hackerrank.
 
-### Using Javascript
+# Solutions to HackerRank problems
+
+### Using JavaScript
 
