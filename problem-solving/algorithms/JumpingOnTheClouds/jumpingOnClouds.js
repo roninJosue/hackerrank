@@ -1,13 +1,12 @@
 const jumpingOnClouds = (c, k) => {
   let e = 100
-  let nextIndexMove = 0
+  let index = 0
 
   do {
-    nextIndexMove = (nextIndexMove + k) % c.length
-    e = c[nextIndexMove] === 1 ? e - 3 : e - 1;
-  } while (nextIndexMove !== 0)
+    index = (index + k) % c.length
+    e = c[index] === 1 ? e - 3 : e - 1;
+  } while (index !== 0)
 
-  console.log(`Energy = ${e}`)
   return e
 }
 
