@@ -2,9 +2,10 @@ const jumpingOnClouds = (c) => {
   let jumps = 0
 
   for (let i = 0; i < c.length - 1;) {
-    let second = c[i + 2]
-    if (second === 1 || i === c.length - 2) i++
-    else i += 2
+    if (c[i + 2] === 0 && i < c.length - 2) {
+      i++
+    }
+    i++
     jumps++
   }
 
