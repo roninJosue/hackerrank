@@ -3,8 +3,8 @@ const findDigits = n => {
   const divideNumber = nString.split('')
   let count = 0
 
-  for (let i = 0; i < divideNumber.length; i++) {
-    count = n % parseInt(divideNumber[i]) === 0 ? count + 1 : count
+  for (const digit of divideNumber) {
+    count = n % parseInt(digit) === 0 ? count + 1 : count
   }
 
   return count
