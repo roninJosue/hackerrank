@@ -1,5 +1,11 @@
 const extraLongFactorials = n => {
-  return n
+  let s = BigInt(1)
+
+  for (let i = 2; i <= n; i++) {
+    s *= BigInt(i)
+  }
+
+  console.log(s.toString())
 }
 
-console.log(extraLongFactorials(30))
+extraLongFactorials(25)
