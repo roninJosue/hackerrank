@@ -1,8 +1,3 @@
-/**
- * Given an array of integers and a positive integer k,
- * find out whether there are two distinct indices i and j in the array such that nums[i] + nums[j] is divisible by k.
- */
-
 const divisibleSumPairs = (_n, k, ar) => {
   let sum = 0;
   ar.forEach((num, index) => {
