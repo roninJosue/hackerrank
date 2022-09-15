@@ -3,7 +3,7 @@
  * find out whether there are two distinct indices i and j in the array such that nums[i] + nums[j] is divisible by k.
  */
 
-const divisibleSumPairs = (n, k, ar) => {
+const divisibleSumPairs = (_n, k, ar) => {
   let sum = 0;
   ar.forEach((num, index) => {
     ar.forEach((num2, index2) => {
