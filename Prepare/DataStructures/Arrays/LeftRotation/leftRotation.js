@@ -1,10 +1,15 @@
-const leftRotation = (arr, d) => {
-  let newArr = []
-  for (let i = 0; i < arr.length; i++) {
-    let newIndex = (d - i) % arr.length
-    newArr[newIndex] = arr[i]
+const leftRotation = (a, d) => {
+  let arrayRotated = [...a]
+  for (let i = 0; i < d; i++) {
+    arrayRotated.push(a[i])
   }
-  return newArr
+
+  return arrayRotated.slice(d)
 }
 
-console.log(leftRotation([1, 2, 3, 4, 5], 4))
+console.log(
+  leftRotation(
+    [33, 47, 70, 37, 8, 53, 13, 93, 71, 72, 51, 100, 60, 87, 97],
+    13
+  )
+)
