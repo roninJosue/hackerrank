@@ -2,11 +2,11 @@ const cutTheSticks = arr => {
   let minLengthStick = Math.min(...arr)
   let sticksCut = []
 
-  while (arr.length > 0) {
+  while (arr.length) {
     sticksCut.push(arr.length)
-    arr = [...arr].map(stick => {
-      return stick - minLengthStick
-    }).filter(stick => stick > 0)
+    arr = arr
+      .map(stick => stick - minLengthStick)
+      .filter(stick => stick > 0)
     minLengthStick = Math.min(...arr)
   }
 
