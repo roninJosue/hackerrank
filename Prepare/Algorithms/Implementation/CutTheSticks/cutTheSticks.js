@@ -1,5 +1,6 @@
 const cutTheSticks = arr => {
-  let minLengthStick = Math.min(...arr)
+  arr.sort((a, b) => a - b)
+  let minLengthStick = arr[0]
   let sticksCut = []
 
   while (arr.length) {
@@ -7,7 +8,7 @@ const cutTheSticks = arr => {
     arr = arr
       .map(stick => stick - minLengthStick)
       .filter(stick => stick > 0)
-    minLengthStick = Math.min(...arr)
+    minLengthStick = arr[0]
   }
 
   return sticksCut
