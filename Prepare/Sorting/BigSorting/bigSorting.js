@@ -1,5 +1,13 @@
 const bigSorting = unsorted => {
-  return unsorted.sort((a, b) => a - b)
+  return unsorted.sort((a, b) => {
+    if (a.length !== b.length) return a.length - b.length
+    else {
+      for (let i = 0; i < a.length; i++) {
+        if (a[i] < b[i]) return -1
+        if (a[i] > b[i]) return 1
+      }
+    }
+  })
 }
 
 console.log(bigSorting([
